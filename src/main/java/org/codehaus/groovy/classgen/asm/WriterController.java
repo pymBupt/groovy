@@ -76,9 +76,9 @@ public class WriterController {
     public void init(final AsmClassGenerator asmClassGenerator, final GeneratorContext gcon, final ClassVisitor cv, final ClassNode cn) {
         CompilerConfiguration config = cn.getCompileUnit().getConfig();
         Map<String,Boolean> optOptions = config.getOptimizationOptions();
-        boolean invokedynamic = false;
+        boolean invokedynamic = true;
         if (optOptions.isEmpty()) {
-            // IGNORE
+            this.optimizeForInt = false;
         } else if (Boolean.FALSE.equals(optOptions.get("all"))) {
             this.optimizeForInt = false;
             // set other optimizations options to false here
